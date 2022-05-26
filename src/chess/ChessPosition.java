@@ -30,7 +30,7 @@ public class ChessPosition {
 	
 //formula geral coluna: a coluna da matrix_ column = chess_column - 'a'
 	protected static ChessPosition fromPosition(Position position) {
-		return new ChessPosition((char)('a' - position.getColumn()), 8 - position.getRow());
+		return new ChessPosition((char)('a' + position.getColumn()), 8 - position.getRow());
 	}
 	
 	@Override
