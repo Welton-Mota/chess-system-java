@@ -45,6 +45,20 @@ public class Board {
 		piece.position = position; // acesso diretamente a posição da peça porque na classe Piece eu coloquei protected e estou na classe board do mesmo pacote
 	}
 	
+	public Piece removePiece(Position position) {
+	// feito uma programação defensiva 
+		if (!positionExists(position)) {
+			throw new BoardException("Position not on the board");
+		}
+		if (piece(position) == null) {
+			return null;
+		}
+		Piece aux = piece(position); //variavel aux = Auxiliar criada para pegar a peça na mão.
+		aux.position = null;
+		pieces[position.getRow()][position.getColumn()] = null;
+		return aux;
+	}
+	
 	private boolean positionExists(int row, int column) {
 		return row >= 0 && row < rows && column >= 0 && column < columns;
 	}
